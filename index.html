@@ -7,20 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Wish list</h1>
 
-<h2>Wish list</h2> 
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+    <ul>
 
-      <section> 
- <p>Enter a new wish</p>
-      <input type='text' class='display'>
-              <button class='clear'>clear</button>
+    </ul>
 
-      </section>
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-<script src='js/index.js'></script>
+    <script>
+      const list = document.querySelector('ul');
+      const input = document.querySelector('input');
+      const button = document.querySelector('button');
+      button.onclick = function() {
+        let myItem = input.value;
+        input.value = '';
+        const listItem = document.createElement('li');
+        const listText = document.createElement('span');
+        const listBtn = document.createElement('button');
+        listItem.appendChild(listText);
+        listText.textContent = myItem;
+        listItem.appendChild(listBtn);
+        listBtn.textContent = 'Delete';
+        list.appendChild(listItem);
+        listBtn.onclick = function(e) {
+          list.removeChild(listItem);
+        }
+        input.focus();
+      }
+    </script>
 </body>
 </html>
